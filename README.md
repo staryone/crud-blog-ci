@@ -1,4 +1,4 @@
-# Blog CRUD Website
+# CRUD Blog CI
 
 This repository contains the code for a blog CRUD website built using CodeIgniter 4 as the backend framework, MySQL as the database, and Bootstrap with custom CSS as the frontend. The frontend uses the Clean Blog template from StartBootstrap.
 
