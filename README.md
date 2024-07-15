@@ -2,6 +2,17 @@
 
 This repository contains the code for a blog CRUD website built using CodeIgniter 4 as the backend framework, MySQL as the database, and Bootstrap with custom CSS as the frontend. The frontend uses the Clean Blog template from StartBootstrap.
 
+## Installation
+Steps to install and run project:
+1. Clone the repository: `git clone https://github.com/staryone/crud-blog-ci.git`
+2. Navigate to the project directory: `cd crud-blog-ci`
+3. Ensure `composer` is installed on your device
+4. Open terminal and run `composer install`
+5. Create a new MySQL database and import the database schema (see the [Database Schema](#database-schema) section)
+6. Configure the database settings in the `.env` file.
+7. Open terminal and run `php spark serve`
+8. Run the project on a local server or hosting.
+
 ## Features
 
 - **Create Blog**: Users can add new blog articles via the form located at `blog/add`. The required properties are:
