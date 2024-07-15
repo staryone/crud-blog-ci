@@ -126,12 +126,11 @@ class Blog extends BaseController
         }
 
         $post = $this->validator->getValidated();
-
         $file = $this->request->getFile('cover');
+        $path_cover = FileController::get_path($data['cover_name']);
         if($file->getSize() > 0){
-            if($data['cover_name']){
-                $rfile = new FileCollection();
-                $rfile->removeFile(FileController::get_path($data['cover_name']));
+            if(file_exists($path_cover)){
+                unlink($path_cover);
             }   
             
             $path_cover = str_replace('images/', '', $file->store('images'));
@@ -156,10 +155,15 @@ class Blog extends BaseController
     public function delete(?string $id = null){
         if($id == null)
             throw new PageNotFoundException('Cannot find the blog item: ' . $id);
+        $cover_name = $this->model->getSingleBlog('id', $id)['cover'];
+        $path_cover = FileController::get_path($cover_name);
 
-        if($this->model->delete($id))
+        if($this->model->delete($id)){
+            if(file_exists($path_cover)){
+                unlink($path_cover);
+            }
             session()->setFlashdata('success', 1);
-        else
+        } else
             session()->setFlashdata('error', 1);
 
         session()->setFlashdata('deleted', 1);

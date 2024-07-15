@@ -8,8 +8,9 @@ use CodeIgniter\HTTP\ResponseInterface;
 class FileController extends BaseController
 {
     public static function get_path($filename){
-        return WRITEPATH . 'uploads/images/' . $filename;
+        return WRITEPATH . 'uploads' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . $filename;
     }
+
     public function serve($filename){
         $file_path = $this::get_path($filename);
 
